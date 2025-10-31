@@ -12,6 +12,10 @@
     ],
     "type": "library",
     "license": "MIT",
+    "support": {
+        "source": "https://github.com/adriceci/audit-center",
+        "issues": "https://github.com/adriceci/audit-center/issues"
+    },
     "authors": [
         {
             "name": "Adrian Cecilia",
