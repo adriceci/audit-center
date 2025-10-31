@@ -3,9 +3,19 @@
 use AdriCeci\AuditCenter\Http\Controllers\AuditLogController;
 use Illuminate\Support\Facades\Route;
 
+// Get prefix from config, remove 'api/' if present since ServiceProvider adds it
 $prefix = config('audit-center.routes.prefix', 'api/audit-logs');
+// Remove 'api/' prefix if it exists, since ServiceProvider already adds it
+$prefix = preg_replace('/^api\//', '', $prefix);
 $middleware = config('audit-center.routes.middleware', ['auth:sanctum', 'admin']);
 
+// Public config endpoint (no auth required - only returns route configuration)
+Route::prefix($prefix)
+    ->group(function () {
+        Route::get('/config', [AuditLogController::class, 'config'])->name('audit-logs.config');
+    });
+
+// Protected routes (require admin)
 Route::prefix($prefix)
     ->middleware($middleware)
     ->group(function () {

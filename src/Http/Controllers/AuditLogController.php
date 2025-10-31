@@ -166,4 +166,16 @@ class AuditLogController extends Controller
 
         return response()->json($stats);
     }
+
+    /**
+     * Get frontend configuration for Audit Center.
+     */
+    public function config()
+    {
+        return response()->json([
+            'route_prefix' => config('audit-center.routes.prefix', 'api/audit-logs'),
+            'frontend_route' => config('audit-center.frontend.route', '/audit-logs'),
+            'api_prefix' => config('audit-center.frontend.api_prefix', '/api/audit-logs'),
+        ]);
+    }
 }

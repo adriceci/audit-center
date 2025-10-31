@@ -55,6 +55,7 @@ class AuditCenterServiceProvider extends ServiceProvider
     protected function registerRoutes(): void
     {
         Route::group([
+            'prefix' => 'api',
             'namespace' => 'AdriCeci\AuditCenter\Http\Controllers',
         ], function () {
             $this->loadRoutesFrom(__DIR__ . '/../../routes/api.php');
