@@ -14,6 +14,6 @@ Route::prefix($prefix)
         Route::get('/{auditLog}', [AuditLogController::class, 'show'])->name('audit-logs.show');
         Route::post('/', [AuditLogController::class, 'store'])->name('audit-logs.store');
         Route::put('/{auditLog}', [AuditLogController::class, 'update'])->name('audit-logs.update');
-        Route::patch('/{auditLog}', [AuditLogController::class, 'update'])->name('audit-logs.update');
+        Route::patch('/{auditLog}', [AuditLogController::class, 'update'])->name('audit-logs.patch');
         Route::delete('/{auditLog}', [AuditLogController::class, 'destroy'])->name('audit-logs.destroy');
     });
