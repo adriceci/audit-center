@@ -66,7 +66,8 @@ return [
 
     // Route configuration
     'routes' => [
-        'prefix' => 'api/audit-logs',
+        // Note: The ServiceProvider automatically adds 'api' prefix, so use 'audit-logs' not 'api/audit-logs'
+        'prefix' => 'audit-logs',
         'middleware' => ['auth:sanctum', 'admin'],
     ],
 
@@ -88,6 +89,13 @@ return [
             'api_token',
         ],
         'auto_register' => false, // Set to true for automatic middleware registration
+    ],
+
+    // Frontend configuration
+    'frontend' => [
+        'route' => '/audit-logs',
+        // Note: Since ApiService typically has baseURL '/api', use 'audit-logs' not '/api/audit-logs'
+        'api_prefix' => 'audit-logs',
     ],
 ];
 ```
@@ -163,8 +171,10 @@ In your Vue application, configure the API service:
 
 ```javascript
 // In your main.js or app.js
+// Note: Use 'audit-logs' (without leading /) if your ApiService has baseURL '/api'
+// The composable will automatically handle the prefix correctly
 window.auditCenterConfig = {
-  apiPrefix: "/api/audit-logs",
+  apiPrefix: "audit-logs", // Without leading '/' to use ApiService's baseURL
   apiService: ApiService, // Your API service instance
 };
 ```
@@ -237,8 +247,9 @@ If you use a different User model:
 
 ```php
 // config/audit-center.php
+// Note: Don't include 'api/' prefix as the ServiceProvider adds it automatically
 'routes' => [
-    'prefix' => 'api/admin/audit-logs',
+    'prefix' => 'admin/audit-logs', // Results in /api/admin/audit-logs
 ],
 ```
 

@@ -15,8 +15,11 @@ const pagination = ref({
 });
 
 // Get API endpoint prefix from config or use default
+// Note: Should not start with '/' so ApiService can use its baseURL '/api'
 function getApiPrefix() {
-    return window.auditCenterConfig?.apiPrefix || '/api/audit-logs';
+    const prefix = window.auditCenterConfig?.apiPrefix || 'audit-logs';
+    // Remove leading '/' if present to ensure ApiService uses its baseURL
+    return prefix.startsWith('/') ? prefix.substring(1) : prefix;
 }
 
 // Get API service - expects a service with get method
@@ -30,7 +33,7 @@ function getApiService() {
     throw new Error(
         'Audit Center: API service not found. Please configure window.auditCenterConfig.apiService ' +
         'in your app.js. Example:\n' +
-        'window.auditCenterConfig = { apiService: ApiService, apiPrefix: "/api/audit-logs" };'
+        'window.auditCenterConfig = { apiService: ApiService, apiPrefix: "audit-logs" };'
     );
 }
 

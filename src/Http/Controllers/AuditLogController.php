@@ -173,9 +173,9 @@ class AuditLogController extends Controller
     public function config()
     {
         return response()->json([
-            'route_prefix' => config('audit-center.routes.prefix', 'api/audit-logs'),
+            'route_prefix' => config('audit-center.routes.prefix', 'audit-logs'),
             'frontend_route' => config('audit-center.frontend.route', '/audit-logs'),
-            'api_prefix' => config('audit-center.frontend.api_prefix', '/api/audit-logs'),
+            'api_prefix' => config('audit-center.frontend.api_prefix', 'audit-logs'),
         ]);
     }
 }

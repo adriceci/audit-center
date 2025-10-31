@@ -26,10 +26,12 @@ return [
         | Route Prefix
         |--------------------------------------------------------------------------
         |
-        | The prefix for all audit log routes. Default is 'api/audit-logs'.
+        | The prefix for all audit log routes. Default is 'audit-logs'.
+        | Note: The ServiceProvider automatically adds 'api' prefix, so this
+        | should not include 'api/' to avoid duplicate prefixes.
         |
         */
-        'prefix' => env('AUDIT_CENTER_ROUTE_PREFIX', 'api/audit-logs'),
+        'prefix' => env('AUDIT_CENTER_ROUTE_PREFIX', 'audit-logs'),
 
         /*
         |--------------------------------------------------------------------------
@@ -145,10 +147,12 @@ return [
         |--------------------------------------------------------------------------
         |
         | The API endpoint prefix used by Vue components. Should match the
-        | route prefix above.
+        | route prefix above. Note: Since ApiService typically has baseURL '/api',
+        | this should be 'audit-logs' (without leading /) to avoid duplicate prefixes.
+        | The frontend will automatically remove the leading '/' if present.
         |
         */
-        'api_prefix' => env('AUDIT_CENTER_FRONTEND_API_PREFIX', '/api/audit-logs'),
+        'api_prefix' => env('AUDIT_CENTER_FRONTEND_API_PREFIX', 'audit-logs'),
     ],
 ];
 
