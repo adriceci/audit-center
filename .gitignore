@@ -1,0 +1,13 @@
+/vendor/
+composer.lock
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+node_modules/
+package-lock.json
+yarn.lock
+.phpunit.result.cache
+
