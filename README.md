@@ -30,7 +30,7 @@ Or add it manually to your `composer.json`:
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/yourusername/audit-center"
+      "url": "https://github.com/adriceci/audit-center"
     }
   ]
 }
@@ -271,4 +271,4 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 ## Support
 
-For issues and questions, please open an issue on [GitHub](https://github.com/yourusername/audit-center).
+For issues and questions, please open an issue on [GitHub](https://github.com/adriceci/audit-center).
